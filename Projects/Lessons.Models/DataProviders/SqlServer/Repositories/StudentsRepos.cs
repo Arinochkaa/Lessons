@@ -11,6 +11,7 @@ namespace Lessons.Models.DataProviders.SqlServer.Repositories
     public class StudentsRepos : IStudentsRepository
     {
         LessonsContext context = new();
+        IQueryable<Course> courses = new CoursesRepos().Items;
 
         public IQueryable<Student> Items => context.Students;
 
@@ -18,8 +19,15 @@ namespace Lessons.Models.DataProviders.SqlServer.Repositories
         {
             var result = GetStudentById(id);
             if (result == null) return;
+            var delfromstud = courses.Where(c => c.Id == id);
+            if (delfromstud.Any())
+            {
+                foreach (var d in delfromstud)
+                {
+                    d.Students.Remove(result);
+                }
+            }
             context.Remove(result);
-            context.SaveChanges();
         }
 
         public Student? GetStudentById(Guid id) => Items.FirstOrDefault(i => i.Id == id);

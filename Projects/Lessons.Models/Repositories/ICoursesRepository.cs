@@ -15,7 +15,7 @@ namespace Lessons.Models.Repositories
         /// <summary>
         /// перечисление всех курсов
         /// </summary>
-        IQueryable<Course> Items { get; set; }
+        IQueryable<Course> Items { get; }
         /// <summary>
         /// получаем данные о курсе
         /// </summary>

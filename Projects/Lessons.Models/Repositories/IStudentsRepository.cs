@@ -15,13 +15,13 @@ namespace Lessons.Models.Repositories
         /// <summary>
         /// перечисление всех студентов
         /// </summary>
-        IQueryable<Student> Items { get; set; }
+        IQueryable<Student> Items { get; }
         /// <summary>
         /// получаем данные о студенте
         /// </summary>
         /// <param name="id"> номер студента в бд </param>
         /// <returns> студент </returns>
-        Student GetStudentById(Guid id);
+        Student? GetStudentById(Guid id);
         /// <summary>
         /// удаление студента
         /// </summary>

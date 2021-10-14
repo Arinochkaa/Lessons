@@ -11,8 +11,8 @@ namespace Lessons.Models.DataProviders.SqlServer
 {
     public class LessonsContext:DbContext
     {
-        DbSet<Student> Students { get; set; } 
-        DbSet<Course> Courses { get; set; }
+       public  DbSet<Student> Students { get; set; } 
+       public DbSet<Course> Courses { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
         {

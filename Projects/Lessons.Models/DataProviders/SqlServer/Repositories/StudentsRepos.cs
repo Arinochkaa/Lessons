@@ -24,11 +24,11 @@ namespace Lessons.Models.DataProviders.SqlServer.Repositories
 
         public Student? GetStudentById(Guid id) => Items.FirstOrDefault(i => i.Id == id);
 
-        public void Update(Student Student)
+        public void Update(Student student)
         {
-            var result = GetStudentById(Student.Id);
-            if (result == null) context.Add(Student);
-            else context.Update(Student);
+            var result = GetStudentById(student.Id);
+            if (result == null) context.Add(student);
+            else context.Update(student);
             context.SaveChanges();
         }
     }

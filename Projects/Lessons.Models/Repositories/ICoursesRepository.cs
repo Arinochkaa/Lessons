@@ -15,18 +15,18 @@ namespace Lessons.Models.Repositories
         /// <summary>
         /// перечисление всех курсов
         /// </summary>
-        IQueryable<Course> Items { get; }
+       IQueryable<Course> Items { get; }
         /// <summary>
         /// получаем данные о курсе
         /// </summary>
         /// <param name="id"> номер курса в бд </param>
         /// <returns> курс </returns>
-        Course GetCourseById(Guid id);
+        Course? GetCourseById(Guid id);
         /// <summary>
         /// удаление курса
         /// </summary>
         /// <param name="id"> номер курса </param>
-        void Delete(Guid id);
+         void Delete(Guid id);
         /// <summary>
         /// обновление или создание нового курса
         /// </summary>

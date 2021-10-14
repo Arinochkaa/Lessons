@@ -10,21 +10,25 @@ namespace Lessons.Models.DataProviders.SqlServer.Repositories
 {
     public class CoursesRepos : ICoursesRepository
     {
-        public IQueryable<Course> Items { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        LessonsContext context = new();
+        public IQueryable<Course> Items => context.Courses;
 
         public void Delete(Guid id)
         {
-            throw new NotImplementedException();
+            var result = GetCourseById(id);
+            if (result == null) return;
+            context.Remove(result);
+            context.SaveChanges();
         }
 
-        public Course GetCourseById(Guid id)
-        {
-            throw new NotImplementedException();
-        }
+        public Course? GetCourseById(Guid id) => Items.FirstOrDefault(i => i.Id == id);
 
         public void Update(Course course)
         {
-            throw new NotImplementedException();
+            var result = GetCourseById(course.Id);
+            if (result == null) context.Add(course);
+            else context.Update(course);
+            context.SaveChanges();
         }
     }
 }

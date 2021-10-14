@@ -11,7 +11,7 @@ namespace Lessons.Models.DataProviders.SqlServer.Repositories
     public class CoursesRepos : ICoursesRepository
     {
         LessonsContext context = new();
-        IQueryable<Student> students = new StudentsRepos().Items;
+        //IQueryable<Student> students = new StudentsRepos().Items;
 
         public IQueryable<Course> Items => context.Courses;
 
@@ -19,14 +19,14 @@ namespace Lessons.Models.DataProviders.SqlServer.Repositories
         {
             var result = GetCourseById(id);
             if (result == null) return;
-            var delfromcours = students.Where(s => s.Id == id);
-            if (delfromcours.Any())
-            {
-                foreach (var d in delfromcours)
-                {
-                    d.Courses.Remove(result);
-                }
-            }
+            //var delfromcours = students.Where(s => s.Id == id);
+            //if (delfromcours.Any())
+            //{
+            //    foreach (var d in delfromcours)
+            //    {
+            //        d.Courses.Remove(result);
+            //    }
+            //}
             context.Remove(result);
            
 

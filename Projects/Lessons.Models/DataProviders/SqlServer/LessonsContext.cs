@@ -16,7 +16,7 @@ namespace Lessons.Models.DataProviders.SqlServer
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
         {
-            optionsBuilder.UseSqlServer("Data Source=DBSRV\\MSSQL2021;Initial Catalog=LessonsAS;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=DBSRV\\MSSQL2021;Initial Catalog=LessonsTAS;Integrated Security=True");
             //optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["CS"].ConnectionString);
         }
     }
